@@ -1,0 +1,168 @@
+name: "Bug report"
+description: Report something that is broken or crashes
+title: "[Bug]: "
+labels: ["bug", "needs-triage"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for filing a bug. Please give a **minimal** repro when you can.
+
+  - type: input
+    id: summary
+    attributes:
+      label: Summary
+      description: Short one-liner of the problem
+      placeholder: "Crash when connecting with SSE transport"
+    validations:
+      required: true
+
+  - type: textarea
+    id: what_happened
+    attributes:
+      label: What happened?
+      description: Tell us what you saw and what you expected instead
+      placeholder: |
+        Actual:
+        - ...
+
+        Expected:
+        - ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro_steps
+    attributes:
+      label: Steps to reproduce
+      description: Numbered steps to reproduce the issue
+      placeholder: |
+        1. Install deepgram-mcp 0.1.0
+        2. Run deepgram-mcp --transport sse
+        3. Observe error XYZ
+    validations:
+      required: true
+
+  - type: textarea
+    id: command
+    attributes:
+      label: Command and output
+      description: Full command you ran and the output (redact your API key).
+      render: text
+      placeholder: |
+        $ deepgram-mcp --transport sse --port 8000
+        Error: ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / traceback
+      description: Full stack trace or error message (use --debug for more detail)
+      render: text
+    validations:
+      required: false
+
+  - type: dropdown
+    id: transport
+    attributes:
+      label: Transport
+      options:
+        - stdio
+        - sse
+        - Not applicable
+    validations:
+      required: true
+
+  - type: dropdown
+    id: editor
+    attributes:
+      label: Editor / client
+      options:
+        - Claude Code
+        - Cursor
+        - Windsurf
+        - Other
+        - Standalone (no editor)
+    validations:
+      required: false
+
+  - type: dropdown
+    id: repro_rate
+    attributes:
+      label: How often?
+      options:
+        - Always
+        - Often
+        - Sometimes
+        - Rarely
+        - Only once
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: regression
+    attributes:
+      label: Is this a regression?
+      options:
+        - label: "Yes, it worked in an earlier version"
+          required: false
+
+  - type: input
+    id: worked_version
+    attributes:
+      label: Last working version (if known)
+      placeholder: "0.1.0"
+    validations:
+      required: false
+
+  - type: input
+    id: pkg_version
+    attributes:
+      label: deepgram-mcp version
+      description: Output of `pip show deepgram-mcp | grep Version`
+      placeholder: "0.1.0"
+    validations:
+      required: true
+
+  - type: input
+    id: python_version
+    attributes:
+      label: Python version
+      placeholder: "3.11.9"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: OS
+      multiple: true
+      options:
+        - macOS (Intel)
+        - macOS (Apple Silicon)
+        - Linux (x86_64)
+        - Linux (arm64)
+        - Windows
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: extra_env
+    attributes:
+      label: Environment details
+      description: Anything else? Docker, CI, proxies, corporate network, etc.
+      render: text
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: conduct
+    attributes:
+      label: Code of Conduct
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true

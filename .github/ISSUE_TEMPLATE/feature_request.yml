@@ -1,0 +1,61 @@
+name: "Feature request"
+description: Suggest a new capability or improvement
+title: "[Feature]: "
+labels: ["enhancement", "needs-triage"]
+body:
+  - type: input
+    id: summary
+    attributes:
+      label: Summary
+      placeholder: "Add streamable-http transport support"
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem to solve
+      description: What user problem does this address?
+      placeholder: "Today I can't use deepgram-mcp with clients that only support streamable-http..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: How should it work?
+      render: bash
+      placeholder: |
+        deepgram-mcp --transport streamable-http --port 8000
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      placeholder: "Use SSE instead; configure a proxy; do nothing"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Scope
+      options:
+        - New transport
+        - New flag / option
+        - Library API change
+        - Documentation
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Extra context / links
+      placeholder: "Related issues, MCP spec links, editor documentation, etc."
+    validations:
+      required: false
