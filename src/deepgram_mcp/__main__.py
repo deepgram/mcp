@@ -28,7 +28,9 @@ def main() -> None:
         choices=["stdio", "sse"],
         help="Transport mode",
     )
-    parser.add_argument("--port", type=int, default=8000, help="Port for HTTP transports")
+    parser.add_argument(
+        "--port", type=int, default=8000, help="Port for HTTP transports"
+    )
     parser.add_argument("--host", default="127.0.0.1", help="Host for HTTP transports")
     parser.add_argument(
         "--base-url",

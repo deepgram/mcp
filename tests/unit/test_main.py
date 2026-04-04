@@ -16,9 +16,7 @@ class TestSignalHandler:
             signal_handler(2, None)
         mock_exit.assert_called_once_with(0)
 
-    def test_prints_message_to_stderr(
-        self, capsys: pytest.CaptureFixture[str]
-    ) -> None:
+    def test_prints_message_to_stderr(self, capsys: pytest.CaptureFixture[str]) -> None:
         from deepgram_mcp.__main__ import signal_handler
 
         with patch("os._exit"):
@@ -180,15 +178,11 @@ class TestMain:
             main()
         assert exc_info.value.code == 1
 
-    def test_exception_prints_error(
-        self, capsys: pytest.CaptureFixture[str]
-    ) -> None:
+    def test_exception_prints_error(self, capsys: pytest.CaptureFixture[str]) -> None:
         with (
             patch.dict(os.environ, {"DEEPGRAM_API_KEY": "test-key"}),
             patch("sys.argv", ["deepgram-mcp"]),
-            patch(
-                "asyncio.run", side_effect=ConnectionRefusedError("refused")
-            ),
+            patch("asyncio.run", side_effect=ConnectionRefusedError("refused")),
             patch("signal.signal"),
             pytest.raises(SystemExit),
         ):
@@ -213,7 +207,15 @@ class TestMain:
             patch.dict(os.environ, {"DEEPGRAM_API_KEY": "test-key"}),
             patch(
                 "sys.argv",
-                ["deepgram-mcp", "--transport", "sse", "--port", "9090", "--host", "0.0.0.0"],
+                [
+                    "deepgram-mcp",
+                    "--transport",
+                    "sse",
+                    "--port",
+                    "9090",
+                    "--host",
+                    "0.0.0.0",
+                ],
             ),
             patch("asyncio.run", side_effect=capture_run),
             patch("signal.signal"),

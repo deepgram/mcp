@@ -19,9 +19,7 @@ class TestDefaultBaseUrl:
 
 
 class TestRunProxy:
-    async def test_constructs_correct_mcp_url(
-        self, mcp_stack: dict[str, Any]
-    ) -> None:
+    async def test_constructs_correct_mcp_url(self, mcp_stack: dict[str, Any]) -> None:
         await run_proxy(
             transport="stdio",
             host="127.0.0.1",
@@ -65,9 +63,7 @@ class TestRunProxy:
         _, call_kwargs = mcp_stack["streamablehttp_client"].call_args
         assert call_kwargs["headers"] == {"Authorization": "Token my-secret-key"}
 
-    async def test_initializes_remote_session(
-        self, mcp_stack: dict[str, Any]
-    ) -> None:
+    async def test_initializes_remote_session(self, mcp_stack: dict[str, Any]) -> None:
         await run_proxy(
             transport="stdio",
             host="127.0.0.1",
@@ -78,9 +74,7 @@ class TestRunProxy:
         )
         mcp_stack["remote"].initialize.assert_awaited_once()
 
-    async def test_discovers_remote_tools(
-        self, mcp_stack: dict[str, Any]
-    ) -> None:
+    async def test_discovers_remote_tools(self, mcp_stack: dict[str, Any]) -> None:
         await run_proxy(
             transport="stdio",
             host="127.0.0.1",
