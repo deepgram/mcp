@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "deepgram-mcp"
+version = "0.1.0"
+description = "Standalone MCP proxy for Deepgram's developer API — remote-proxy architecture with zero client upgrades"
+readme = "README.md"
+authors = [{ name = "Deepgram", email = "devrel@deepgram.com" }]
+requires-python = ">=3.10"
+license = "MIT"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+keywords = ["deepgram", "mcp", "model-context-protocol", "ai", "speech", "transcription"]
+dependencies = [
+    "mcp>=1.0.0",
+    "pydantic>=2.10.1",
+    "uvicorn>=0.30.0",
+    "starlette>=0.37.0",
+]
+
+[project.scripts]
+deepgram-mcp = "deepgram_mcp.__main__:main"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3.3",
+    "pytest-asyncio>=0.24.0",
+    "pytest-cov>=6.0.0",
+    "mypy>=1.13.0",
+    "ruff>=0.8.1",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["deepgram_mcp*"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "B", "Q"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
