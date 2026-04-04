@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "deepgram-mcp"
-version = "0.1.0"
+version = "0.1.0" # x-release-please-version
 description = "Standalone MCP proxy for Deepgram's developer API — remote-proxy architecture with zero client upgrades"
 readme = "README.md"
 authors = [{ name = "Deepgram", email = "devrel@deepgram.com" }]
