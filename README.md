@@ -2,6 +2,8 @@
 
 Deepgram's [Model Context Protocol](https://modelcontextprotocol.io) server — gives AI editors (Claude Code, Cursor, Windsurf, and others) direct access to Deepgram's speech, transcription, and audio intelligence tools.
 
+**Standalone package.** Install `deepgram-mcp` directly if you want just the MCP server without the full CLI suite. If you already use the [Deepgram CLI](https://github.com/deepgram/cli) (`pip install deepctl`), `deepgram-mcp` is included as a dependency and the `dg mcp` command wraps it — no separate install needed.
+
 ## Why deepgram-mcp is different
 
 Most MCP servers ship tools as hardcoded Python. When the provider adds a new tool, you must upgrade the package to get it.
